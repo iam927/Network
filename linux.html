@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Commands | NetVerse Notes</title>
+    <meta name="description" content="Comprehensive guide to Linux networking commands.">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .cmd-section { margin-bottom: 3rem; }
+        .cmd-section h3 { color: var(--accent-purple); display: flex; align-items: center; gap: 0.5rem; }
+        .cmd-section p { margin-bottom: 1rem; }
+        table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+        th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--surface-border); }
+        th { background: rgba(0,0,0,0.2); font-weight: 600; color: var(--accent-cyan); }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#06b6d4" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                    <path d="M12 20V14"></path>
+                    <path d="M8 18L12 14L16 18"></path>
+                    <circle cx="12" cy="6" r="4"></circle>
+                    <path d="M4 10C6 10 8 11 8 13"></path>
+                    <path d="M20 10C18 10 16 11 16 13"></path>
+                </svg>
+                <span>NetVerse</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../tools/subnet.html">Tools</a></li>
+                <li><a href="osi.html" class="active">Notes</a></li>
+                <li><a href="../wifi/troubleshooting.html">WiFi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+            
+            <aside class="glass-panel" style="flex: 1; min-width: 250px; max-height: max-content;">
+                <h3>Notes Menu</h3>
+                <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li><a href="osi.html" style="color: var(--text-secondary); text-decoration: none;">OSI Model</a></li>
+                    <li><a href="linux.html" style="color: var(--accent-cyan); text-decoration: none; font-weight: bold;">Linux Commands</a></li>
+                </ul>
+            </aside>
+
+            <div class="glass-panel" style="flex: 3; min-width: 300px;">
+                <h2>Linux Networking Commands</h2>
+                <p>A reference guide to the most essential networking commands for Linux administration and troubleshooting.</p>
+
+                <div class="cmd-section mt-4">
+                    <h3>1. ping</h3>
+                    <p>Tests reachability of a host on an Internet Protocol (IP) network and measures the round-trip time for messages.</p>
+                    <pre><code>ping -c 4 google.com</code></pre>
+                    <table>
+                        <tr><th>Flag</th><th>Description</th></tr>
+                        <tr><td><code>-c [count]</code></td><td>Stop after sending specified number of ECHO_REQUEST packets.</td></tr>
+                        <tr><td><code>-i [interval]</code></td><td>Wait interval seconds between sending each packet.</td></tr>
+                    </table>
+                </div>
+
+                <div class="cmd-section">
+                    <h3>2. ip / ipconfig</h3>
+                    <p>The modern replacement for <code>ifconfig</code>. Shows or manipulates routing, network devices, interfaces, and tunnels.</p>
+                    <pre><code>ip a
+ip route show</code></pre>
+                    <table>
+                        <tr><th>Command</th><th>Description</th></tr>
+                        <tr><td><code>ip addr show</code></td><td>Display IP addresses and property information.</td></tr>
+                        <tr><td><code>ip link set dev eth0 down</code></td><td>Bring an interface down.</td></tr>
+                    </table>
+                </div>
+
+                <div class="cmd-section">
+                    <h3>3. netstat / ss</h3>
+                    <p>Print network connections, routing tables, interface statistics, masquerade connections, and multicast memberships. <code>ss</code> is the faster, modern alternative.</p>
+                    <pre><code>ss -tuln</code></pre>
+                    <table>
+                        <tr><th>Flag</th><th>Description</th></tr>
+                        <tr><td><code>-t</code></td><td>Display TCP sockets.</td></tr>
+                        <tr><td><code>-u</code></td><td>Display UDP sockets.</td></tr>
+                        <tr><td><code>-l</code></td><td>Display listening sockets.</td></tr>
+                        <tr><td><code>-n</code></td><td>Do not resolve service names (show ports instead).</td></tr>
+                    </table>
+                </div>
+
+                <div class="cmd-section">
+                    <h3>4. traceroute</h3>
+                    <p>Prints the route packets trace to network host. It shows every hop along the path.</p>
+                    <pre><code>traceroute 8.8.8.8</code></pre>
+                </div>
+
+                <div class="cmd-section">
+                    <h3>5. nslookup / dig</h3>
+                    <p>Query Internet name servers interactively. <code>dig</code> provides more comprehensive output.</p>
+                    <pre><code>dig google.com
+nslookup example.com</code></pre>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> NetVerse.</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

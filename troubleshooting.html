@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WiFi Troubleshooting | NetVerse</title>
+    <meta name="description" content="Guide for troubleshooting WiFi APs and coverage.">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#06b6d4" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                    <path d="M12 20V14"></path>
+                    <path d="M8 18L12 14L16 18"></path>
+                    <circle cx="12" cy="6" r="4"></circle>
+                    <path d="M4 10C6 10 8 11 8 13"></path>
+                    <path d="M20 10C18 10 16 11 16 13"></path>
+                </svg>
+                <span>NetVerse</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../tools/subnet.html">Tools</a></li>
+                <li><a href="../notes/osi.html">Notes</a></li>
+                <li><a href="troubleshooting.html" class="active">WiFi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="glass-panel mt-4">
+            <h2>WiFi AP Troubleshooting Guide</h2>
+            <p>Best practices for deploying and managing Wireless Access Points (APs).</p>
+
+            <div class="grid mt-4">
+                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 0.5rem; border-top: 4px solid var(--accent-cyan);">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem;"><span style="font-size: 1.5rem;">📡</span> AP Placement</h3>
+                    <ul style="margin-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                        <li>Mount APs on ceilings or high walls for clear line-of-sight.</li>
+                        <li>Keep away from metal structures and water sources (e.g., large pipes).</li>
+                        <li>Avoid hiding APs behind thick concrete or brick walls.</li>
+                        <li>Ensure about 15-20% overlap between adjacent AP coverage areas for smooth roaming.</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 0.5rem; border-top: 4px solid var(--accent-purple);">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem;"><span style="font-size: 1.5rem;">📊</span> Channel Overlap</h3>
+                    <ul style="margin-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                        <li>Co-Channel Interference (CCI) occurs when APs share the same channel.</li>
+                        <li>For 2.4GHz, ONLY use non-overlapping channels: <strong>1, 6, and 11</strong>.</li>
+                        <li>Use a staggered channel plan (honeycomb pattern) so no two adjacent APs are on the same channel.</li>
+                        <li>In dense areas, lower transmit power to reduce interference cells.</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(0,0,0,0.3); padding: 1.5rem; border-radius: 0.5rem; border-top: 4px solid #f59e0b;">
+                    <h3 style="display: flex; align-items: center; gap: 0.5rem;"><span style="font-size: 1.5rem;">📶</span> 2.4GHz vs 5GHz</h3>
+                    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem;">
+                        <tr style="border-bottom: 1px solid var(--surface-border);">
+                            <th style="text-align: left; padding: 0.5rem; color: var(--text-primary);">Feature</th>
+                            <th style="text-align: left; padding: 0.5rem; color: var(--accent-cyan);">2.4 GHz</th>
+                            <th style="text-align: left; padding: 0.5rem; color: var(--accent-purple);">5 GHz</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 0.5rem;">Coverage Range</td>
+                            <td style="padding: 0.5rem;">Longer (penetrates objects better)</td>
+                            <td style="padding: 0.5rem;">Shorter</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                            <td style="padding: 0.5rem;">Speed / Bandwidth</td>
+                            <td style="padding: 0.5rem;">Lower</td>
+                            <td style="padding: 0.5rem;">Higher</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.5rem;">Interference</td>
+                            <td style="padding: 0.5rem;">High (Bluetooth, Microwaves)</td>
+                            <td style="padding: 0.5rem;">Low</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="mt-4" style="background: rgba(6, 182, 212, 0.1); padding: 1.5rem; border-radius: 0.5rem; border-left: 4px solid var(--accent-cyan);">
+                <h3 style="margin-bottom: 0.5rem;">Common Troubleshooting Steps</h3>
+                <p>If users report slow speeds or dropping connections:</p>
+                <ol style="margin-left: 1.5rem; color: var(--text-secondary); line-height: 1.8;">
+                    <li>Verify the user is connected to the correct SSID and band.</li>
+                    <li>Check the AP's physical link (PoE, ethernet cable integrity).</li>
+                    <li>Perform an RF scan to check for new sources of interference.</li>
+                    <li>Ensure the AP firmware is up to date.</li>
+                    <li>Check DHCP scope to ensure IP addresses aren't exhausted.</li>
+                </ol>
+            </div>
+        </div>
+    </main>
+
+    <footer style="margin-top: 4rem;">
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> NetVerse.</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

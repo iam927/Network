@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subnet Calculator | NetVerse Tools</title>
+    <meta name="description" content="Free online IPv4 subnet calculator.">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#06b6d4" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                    <path d="M12 20V14"></path>
+                    <path d="M8 18L12 14L16 18"></path>
+                    <circle cx="12" cy="6" r="4"></circle>
+                    <path d="M4 10C6 10 8 11 8 13"></path>
+                    <path d="M20 10C18 10 16 11 16 13"></path>
+                </svg>
+                <span>NetVerse</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="subnet.html" class="active">Tools</a></li>
+                <li><a href="../notes/osi.html">Notes</a></li>
+                <li><a href="../wifi/troubleshooting.html">WiFi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+            <!-- Sidebar / Tools Menu -->
+            <aside class="glass-panel" style="flex: 1; min-width: 250px; max-height: max-content;">
+                <h3>Tools Menu</h3>
+                <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li><a href="subnet.html" style="color: var(--accent-cyan); text-decoration: none; font-weight: bold;">Subnet Calculator</a></li>
+                    <li><a href="ip-checker.html" style="color: var(--text-secondary); text-decoration: none;">IP Address Checker</a></li>
+                    <!-- Add more tools here later -->
+                </ul>
+            </aside>
+
+            <!-- Main Tool Area -->
+            <div class="glass-panel" style="flex: 3; min-width: 300px;">
+                <h2>IPv4 Subnet Calculator</h2>
+                <p>Calculate network address, broadcast address, and usable IP ranges.</p>
+
+                <form id="subnet-form" class="mt-4">
+                    <div class="form-group">
+                        <label for="ipAddress">IP Address</label>
+                        <input type="text" id="ipAddress" class="form-control" placeholder="e.g., 192.168.1.10" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="cidr">Subnet Mask (CIDR)</label>
+                        <select id="cidr" class="form-control">
+                            <!-- Options populated by JS -->
+                        </select>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Calculate</button>
+                </form>
+
+                <div id="subnet-results" class="result-box">
+                    <h3>Results</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem;">
+                        <div>
+                            <p style="margin-bottom: 0.2rem; font-size: 0.9rem;">Network Address:</p>
+                            <code id="res-network">-</code>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 0.2rem; font-size: 0.9rem;">Broadcast Address:</p>
+                            <code id="res-broadcast">-</code>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 0.2rem; font-size: 0.9rem;">Subnet Mask:</p>
+                            <code id="res-mask">-</code>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 0.2rem; font-size: 0.9rem;">Total Hosts:</p>
+                            <code id="res-total">-</code>
+                        </div>
+                        <div>
+                            <p style="margin-bottom: 0.2rem; font-size: 0.9rem;">Usable Host Range:</p>
+                            <code id="res-range">-</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> NetVerse.</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+    <script src="../js/tools.js"></script>
+</body>
+</html>

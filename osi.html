@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OSI Model | NetVerse Notes</title>
+    <meta name="description" content="Study notes on the OSI Model for CCNA.">
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .osi-layers {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        .layer {
+            background: rgba(0,0,0,0.3);
+            border-left: 4px solid var(--accent-cyan);
+            padding: 1.5rem;
+            border-radius: 0 0.5rem 0.5rem 0;
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 2rem;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .layer:hover {
+            background: rgba(6, 182, 212, 0.1);
+            transform: translateX(10px);
+        }
+        .layer-num {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: rgba(255,255,255,0.1);
+            text-align: center;
+            position: relative;
+        }
+        .layer-num::after {
+            content: attr(data-name);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1rem;
+            color: var(--accent-cyan);
+            background: #1e293b;
+            padding: 0.2rem 0.5rem;
+            border-radius: 0.25rem;
+        }
+        @media (max-width: 600px) {
+            .layer { grid-template-columns: 1fr; gap: 1rem; text-align: center; }
+            .layer-num { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="../index.html" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#06b6d4" />
+                        <stop offset="100%" stop-color="#8b5cf6" />
+                    </linearGradient>
+                    <path d="M12 20V14"></path>
+                    <path d="M8 18L12 14L16 18"></path>
+                    <circle cx="12" cy="6" r="4"></circle>
+                    <path d="M4 10C6 10 8 11 8 13"></path>
+                    <path d="M20 10C18 10 16 11 16 13"></path>
+                </svg>
+                <span>NetVerse</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../tools/subnet.html">Tools</a></li>
+                <li><a href="osi.html" class="active">Notes</a></li>
+                <li><a href="../wifi/troubleshooting.html">WiFi</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div style="display: flex; gap: 2rem; margin-top: 2rem; flex-wrap: wrap;">
+            
+            <aside class="glass-panel" style="flex: 1; min-width: 250px; max-height: max-content;">
+                <h3>Notes Menu</h3>
+                <ul style="list-style: none; margin-top: 1rem; display: flex; flex-direction: column; gap: 0.5rem;">
+                    <li><a href="osi.html" style="color: var(--accent-cyan); text-decoration: none; font-weight: bold;">OSI Model</a></li>
+                    <li><a href="linux.html" style="color: var(--text-secondary); text-decoration: none;">Linux Commands</a></li>
+                </ul>
+            </aside>
+
+            <div class="glass-panel" style="flex: 3; min-width: 300px;">
+                <h2>The OSI Model</h2>
+                <p>The Open Systems Interconnection (OSI) model conceptualizes how data travels across a network. Remembering the layers is critical for the CCNA exam.</p>
+
+                <p style="background: rgba(139, 92, 246, 0.1); padding: 1rem; border-radius: 0.5rem; border-left: 4px solid var(--accent-purple);">
+                    <strong>Mnemonic Tip:</strong> Please Do Not Throw Sausage Pizza Away
+                </p>
+
+                <div class="osi-layers">
+                    <div class="layer">
+                        <div class="layer-num" data-name="Physical">1</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Physical Layer</h3>
+                            <p style="margin-bottom: 0;">Deals with the physical transmission of raw data bits over a communication channel. (Cables, Hubs, Bits)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="layer">
+                        <div class="layer-num" data-name="Data Link">2</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Data Link Layer</h3>
+                            <p style="margin-bottom: 0;">Provides node-to-node data transfer and error detection. Uses MAC addresses. (Switches, Frames)</p>
+                        </div>
+                    </div>
+
+                    <div class="layer">
+                        <div class="layer-num" data-name="Network">3</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Network Layer</h3>
+                            <p style="margin-bottom: 0;">Handles routing of data paths using logical IP addresses. (Routers, Packets)</p>
+                        </div>
+                    </div>
+
+                    <div class="layer">
+                        <div class="layer-num" data-name="Transport">4</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Transport Layer</h3>
+                            <p style="margin-bottom: 0;">Ensures complete data transfer. Handles flow control and error recovery. (TCP/UDP, Segments)</p>
+                        </div>
+                    </div>
+
+                    <div class="layer">
+                        <div class="layer-num" data-name="Session">5</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Session Layer</h3>
+                            <p style="margin-bottom: 0;">Establishes, manages, and terminates connections between applications.</p>
+                        </div>
+                    </div>
+
+                    <div class="layer">
+                        <div class="layer-num" data-name="Presentation">6</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Presentation Layer</h3>
+                            <p style="margin-bottom: 0;">Translates, encrypts, and compresses data. Ensures data is readable by the receiving system.</p>
+                        </div>
+                    </div>
+
+                    <div class="layer">
+                        <div class="layer-num" data-name="Application">7</div>
+                        <div>
+                            <h3 style="color: var(--text-primary); margin-bottom: 0.5rem;">Application Layer</h3>
+                            <p style="margin-bottom: 0;">Provides network services directly to the user's application. (HTTP, FTP, DNS)</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; <span id="current-year"></span> NetVerse.</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
